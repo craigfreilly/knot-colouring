@@ -4,9 +4,9 @@ A constraint programming model for knot colouring.
 ##How to run
 Clone this repo or just download the java files.  Then compile using javac *.java.  _KnotColouring_ currently takes as argument a file name, followed by an integer.  The integer is the value p, for which you wish to colour the knot mod p by.  For example, __KnotColouring__ is run from the command line as follows:
 
-'''
+```
 java KnotColouring trefoil.txt 3
-'''
+```
 
 The file should be a text file, and should contain one or more Gauss codes for knots in the format "-1, 2, -3, 1, -2, 3", each on its own line, and with no trailing empty lines at the end of the file.  _KnotColouring_ outputs to the command line the Gauss code for a knot followed by its colouring should one exist, and "No solution found" if the knot does not admit a colouring mod p.
 
