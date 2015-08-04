@@ -2,7 +2,7 @@
 A constraint programming model for knot colouring.
 
 ##How to run
-Clone this repo or just download the java files.  Then compile using javac *.java.  _KnotColouring_ currently takes as argument a file name, followed by an integer.  The integer is the value p, for which you wish to colour the knot mod p by.  For example, __KnotColouring__ is run from the command line as follows:
+Clone this repo or just download the java files.  Then compile using javac *.java.  _KnotColouring_ currently takes as argument a file name, followed by an integer.  The integer is the value p, for which you wish to colour the knot mod p by.  For example, _KnotColouring_ is run from the command line as follows:
 
 ```
 java KnotColouring trefoil.txt 3
