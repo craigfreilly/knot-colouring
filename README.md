@@ -12,7 +12,7 @@ The file should be a text file, and should contain one or more Gauss codes for k
 
 ###Dependencies
 
-You need to have Choco version 2.1.5 in your classpath for this to work.
+You need to have java installed on your machine and have [Choco version 2.1.5](http://www.dcs.gla.ac.uk/~pat/cpM/jchoco/jchoco2.1.5/jar/) in your classpath for this to work.
 
 ##Overview
 
