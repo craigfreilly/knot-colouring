@@ -2,7 +2,7 @@
 A constraint programming model for knot colouring.
 
 ##How to run
-Clone this repo or just download the java files.  Then compile using javac *.java.  _KnotColouring_ currently takes as argument a file name, followed by an integer.  The integer is the value p, for which you wish to colour the knot mod p by.  For example, __KnotColouring__ is run from the command line as follows:
+Clone this repo or just download the java files.  Then compile using javac *.java.  _KnotColouring_ currently takes as argument a file name, followed by an integer.  The integer is the value p, for which you wish to colour the knot mod p by.  For example, _KnotColouring_ is run from the command line as follows:
 
 ```
 java KnotColouring trefoil.txt 3
@@ -12,7 +12,7 @@ The file should be a text file, and should contain one or more Gauss codes for k
 
 ###Dependencies
 
-You need to have Choco version 2.1.5 in your classpath for this to work.
+You need to have java installed on your machine and have [Choco version 2.1.5](http://www.dcs.gla.ac.uk/~pat/cpM/jchoco/jchoco2.1.5/jar/) in your classpath for this to work.
 
 ##Overview
 
