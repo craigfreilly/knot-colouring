@@ -28,14 +28,15 @@ public class KnotColouring
 		while (sc.hasNextLine())
 		{
 			guassString = sc.nextLine();
+            int num
 
 			for (String s: guassString.split("[, ]+"))
 			{
 				try
                 {
-                    int num = Integer.parseInt(s.trim());
+                    num = Integer.parseInt(s.trim());
                 }
-                catch(NumberFormatException)
+                catch(NumberFormatException e) 
                 {
                     PrintWriter writer = new PrintWriter(fname, "UTF-8");
                     writer.print("Problem");
