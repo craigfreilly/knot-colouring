@@ -31,7 +31,7 @@ public class KnotColouring
 
 			for (String s: guassString.split("[, ]+"))
 			{
-				int num = Integer.parseInt(s);
+				int num = Integer.parseInt(s.trim());
 
 				// num = zeroBase(num);
 
@@ -49,12 +49,9 @@ public class KnotColouring
      		{
      			int n = gaussList.get(i);
 
-				System.out.print("" + gaussList.get(i) + " ");
-
+				// System.out.print("" + gaussList.get(i) + " ");
 			}
-
-
-				System.out.println("");
+    		// System.out.println("");
 
      		for (int i = 0; i < (size / 2); i++)
      		{

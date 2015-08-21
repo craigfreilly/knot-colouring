@@ -68,10 +68,10 @@ public static final String ANSI_WHITE = "\u001B[37m";
     	arc = makeIntVarArray("arc ", numOfArcs, 0, pColours - 1);
     	notAllSame = makeIntVarArray("notAllSame", numOfArcs - 1, 0, 1);
 
-    	solutions = new int[3];
-    	solutions[0] = (-1) * pColours;
-    	solutions[1] = 0;
-    	solutions[2] = pColours;
+    	// solutions = new int[3];
+    	// solutions[0] = (-1) * pColours;
+    	// solutions[1] = 0;
+    	// solutions[2] = pColours;
 
     	model = new CPModel();
         solver = new CPSolver();
@@ -80,8 +80,15 @@ public static final String ANSI_WHITE = "\u001B[37m";
 
     public boolean isColourable()
     {
+        return isColourable(false);
+    }
+
+    public boolean isColourable(boolean print)
+    {
+        boolean verbose = print;
     	Knot.WalkIterator walk = knot.walk();
-    	int i = 0; //counter for how many arcs we've seen
+        //counter for how many arcs we've seen
+    	int i = 0; 
     	Knot.Crossing crossing;
     	Knot.Crossing target;
     	int crossingNum;
@@ -151,8 +158,6 @@ public static final String ANSI_WHITE = "\u001B[37m";
      		over2 = colouringPositions.popOver(j);
      		under1 = colouringPositions.popUnder(j);
      		under2 = colouringPositions.popUnder(j);
-     		// System.out.println("over1 = " + over1 + "  |  over2 = " + over2);
-     		// System.out.println("under1 = " + under1 + "  |  under2 = " + under2);
 
      		// overarcs at a crossing must take the same value
      		model.addConstraint(eq(arc[over1], arc[over2]));
@@ -165,14 +170,10 @@ public static final String ANSI_WHITE = "\u001B[37m";
      		// WLOG we can choose either overcrossing
      		// model.addConstraint(mod(minus(minus(mult(arc[over1], constant(2)), arc[under1]), arc[under2])
      		//, constant(0), constant(pColours)));
-
      		Constraint negP = eq(minus(minus(mult(arc[over1], 2), arc[under1]), arc[under2]), ((-1) * pColours));
      		Constraint zero = eq(minus(minus(mult(arc[over1], 2), arc[under1]), arc[under2]), 0);
      		Constraint p = eq(minus(minus(mult(arc[over1], 2), arc[under1]), arc[under2]), pColours);
      		model.addConstraint(or(negP, zero, p));
-
-    		// System.out.println("EQUATION ---------> 2*" + over1 + " - " + under1 + " - " + under2 + " = 0");
-
      	}
 
      	// we must also set the constraint that some arc value is not the same as the rest
@@ -190,40 +191,34 @@ public static final String ANSI_WHITE = "\u001B[37m";
     	int solution = -1;
     	String colour;
 
-    	// System.out.println(ANSI_GREEN);
-
-    	if (success)
+    	if (success && verbose)
     	{
-	   //  	for (int k = 0; k < numOfArcs; k++)
-	   //  	{
-	   //  		solution = solver.getVar(arc[k]).getVal();
+	    	for (int k = 0; k < numOfArcs; k++)
+	    	{
+	    		solution = solver.getVar(arc[k]).getVal();
 
-	   //  		switch (solution)
-	   //  		{
-	   //  			case 0: colour = ANSI_RED;
-	   //  					break;
-	   //  			case 1: colour = ANSI_GREEN;
-	   //  					break;
-	   //  			case 2: colour = ANSI_BLUE;
-	   //  					break;
-	   //  			case 3: colour = ANSI_YELLOW;
-	   //  					break;
-	   //  			case 4: colour = ANSI_CYAN;
-	   //  					break;
-	   //  			case 5: colour = ANSI_PURPLE;
-	   //  					break;
-	   //  			default: colour = ANSI_WHITE;
-	   //  					break;
-	   //  		}
+	    		switch (solution)
+	    		{
+	    			case 0: colour = ANSI_RED;
+	    					break;
+	    			case 1: colour = ANSI_GREEN;
+	    					break;
+	    			case 2: colour = ANSI_BLUE;
+	    					break;
+	    			case 3: colour = ANSI_YELLOW;
+	    					break;
+	    			case 4: colour = ANSI_CYAN;
+	    					break;
+	    			case 5: colour = ANSI_PURPLE;
+	    					break;
+	    			default: colour = ANSI_WHITE;
+	    					break;
+	    		}
 
-				// System.out.println(colour + "arc " + k + " colour " + solution + ANSI_RESET);
+				System.out.println(colour + "arc " + k + " colour " + solution + ANSI_RESET);
 
-	   //  	}
-            // System.out.println();
-    	}
-    	else
-    	{
-    		// System.out.println("No solution found");
+	    	}
+            System.out.println();
     	}
 
         //feasible -- nodes -- cpu
