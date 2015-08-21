@@ -25,13 +25,14 @@ classes: $(CLASSES:.java=.class)
 clean:
 	$(RM) *.class
 
-dir-%:
-	mkdir -p $(RESULTS)/$(COLOURS)
+%.txt:
+	mkdir -p $(RESULTS)/
+	$(foreach c, $(COLOURS), mkdir -p $(RESULTS)/$(c) && $(JVM) $(CHOCOFLAG) KnotColouring Rolfsen-table/3_1.txt $(c))
 
-%-coloured.txt:
-	$JVM $(CHOCOFLAG) KnotColouring Rolfsen-table/$(i) $(COLOURS)
+# %.txt: classes 
+# 	$(JVM) $(CHOCOFLAG) KnotColouring Rolfsen-table/$(INSTANCES) 3
 
-run: classes
-	$(foreach i, $(INSTANCES), $(RESULTS)/$(COLOURS)/$(i))
+run: classes $(foreach p, $(COLOURS), $(RESULTS)/$(p)/3_1.txt)
+
 #	$(JVM) $(CHOCOFLAG) KnotColouring Rolfsen-table/3_1.txt 3
 
