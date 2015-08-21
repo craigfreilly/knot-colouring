@@ -26,8 +26,12 @@ clean:
 	$(RM) *.class
 
 dir-%:
-	mkdir -p $(RESULTS)
+	mkdir -p $(RESULTS)/$(COLOURS)
+
+%-coloured.txt:
+	$JVM $(CHOCOFLAG) KnotColouring Rolfsen-table/$(i) $(COLOURS)
+
 run: classes
-	$(foreach i, $(INSTANCES), $(JVM) $(CHOCOFLAG) KnotColouring Rolfsen-table/$(i) $(COLOURS))# > $(RESULTS)/$(i)-$(COLOURS)-coloured.txt)
+	$(foreach i, $(INSTANCES), $(RESULTS)/$(COLOURS)/$(i))
 #	$(JVM) $(CHOCOFLAG) KnotColouring Rolfsen-table/3_1.txt 3
 
