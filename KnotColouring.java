@@ -31,7 +31,17 @@ public class KnotColouring
 
 			for (String s: guassString.split("[, ]+"))
 			{
-				int num = Integer.parseInt(s.trim());
+				try
+                {
+                    int num = Integer.parseInt(s.trim());
+                }
+                catch(NumberFormatException)
+                {
+                    PrintWriter writer = new PrintWriter(fname, "UTF-8");
+                    writer.print("Problem");
+                    writer.close();
+                    System.exit(0);
+                }
 
 				// num = zeroBase(num);
 
