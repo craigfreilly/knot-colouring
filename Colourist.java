@@ -194,38 +194,40 @@ public static final String ANSI_WHITE = "\u001B[37m";
 
     	if (success)
     	{
-	    	for (int k = 0; k < numOfArcs; k++)
-	    	{
-	    		solution = solver.getVar(arc[k]).getVal();
+	   //  	for (int k = 0; k < numOfArcs; k++)
+	   //  	{
+	   //  		solution = solver.getVar(arc[k]).getVal();
 
-	    		switch (solution)
-	    		{
-	    			case 0: colour = ANSI_RED;
-	    					break;
-	    			case 1: colour = ANSI_GREEN;
-	    					break;
-	    			case 2: colour = ANSI_BLUE;
-	    					break;
-	    			case 3: colour = ANSI_YELLOW;
-	    					break;
-	    			case 4: colour = ANSI_CYAN;
-	    					break;
-	    			case 5: colour = ANSI_PURPLE;
-	    					break;
-	    			default: colour = ANSI_WHITE;
-	    					break;
-	    		}
+	   //  		switch (solution)
+	   //  		{
+	   //  			case 0: colour = ANSI_RED;
+	   //  					break;
+	   //  			case 1: colour = ANSI_GREEN;
+	   //  					break;
+	   //  			case 2: colour = ANSI_BLUE;
+	   //  					break;
+	   //  			case 3: colour = ANSI_YELLOW;
+	   //  					break;
+	   //  			case 4: colour = ANSI_CYAN;
+	   //  					break;
+	   //  			case 5: colour = ANSI_PURPLE;
+	   //  					break;
+	   //  			default: colour = ANSI_WHITE;
+	   //  					break;
+	   //  		}
 
-				System.out.println(colour + "arc " + k + " colour " + solution + ANSI_RESET);
+				// System.out.println(colour + "arc " + k + " colour " + solution + ANSI_RESET);
 
-	    	}
+	   //  	}
+            // System.out.println();
     	}
     	else
     	{
-    		System.out.println("No solution found");
+    		// System.out.println("No solution found");
     	}
 
-    	System.out.println("nodes: "+ solver.getNodeCount() +"   cpu: "+ solver.getTimeCount());
+        //feasible -- nodes -- cpu
+    	System.out.println("" + solver.isFeasible() + " " + solver.getNodeCount() + " " + solver.getTimeCount());
 
     	return success;
     }
