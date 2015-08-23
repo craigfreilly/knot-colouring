@@ -28,7 +28,7 @@ public class KnotColouring
 		while (sc.hasNextLine())
 		{
 			guassString = sc.nextLine();
-            int num
+		        int num = 0;
 
 			for (String s: guassString.split("[, ]+"))
 			{
