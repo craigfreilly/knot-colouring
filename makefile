@@ -4,7 +4,7 @@ JC = javac
 JVM = java
 SHELL := /bin/bash
 INSTANCES := $(shell cut -d' ' -f1 instances-R-H-T.txt)
-COLOURS := $(shell cut -d' ' -f1 colours.txt)
+COLOURS := 43
 RESULTS := results
 .SUFFIXES: .java .class
 .java.class:
@@ -26,15 +26,15 @@ clean:
 	$(RM) *.class
 
 dir-%:
-	mkdir -p $(RESULTS)/3
+	mkdir -p $(RESULTS)/$(COLOURS)
 
 # results/%/3_1.txt:
 # 	mkdir -p $(RESULTS)/$*
 # 	$(JVM) $(CHOCOFLAG) KnotColouring Rolfsen-table/3_1.txt $* > results/$*/3_1.txt
 
-results/3/%:
-	mkdir -p $(RESULTS)/3
-	$(JVM) $(CHOCOFLAG) KnotColouring R-H-T-table/$* 3 > results/3/$*
+results/$(COLOURS)/%:
+	mkdir -p $(RESULTS)/$(COLOURS)
+	$(JVM) $(CHOCOFLAG) KnotColouring R-H-T-table/$* $(COLOURS) > results/$(COLOURS)/$*
 
 
 # results/5/3_1.txt:
@@ -61,7 +61,7 @@ results/3/%:
 
 # run: classes $(foreach p, $(COLOURS), $(RESULTS)/$(p)/3_1.txt)
 
-run: classes $(foreach i, $(INSTANCES), $(RESULTS)/3/$(i)))
+run: classes $(foreach i, $(INSTANCES), $(RESULTS)/$(COLOURS)/$(i)))
 
 #	$(JVM) $(CHOCOFLAG) KnotColouring Rolfsen-table/3_1.txt 3
 
