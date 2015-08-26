@@ -1,18 +1,39 @@
 # knot-colouring
+
 A constraint programming model for knot colouring.
 
-##How to run
-Clone this repo or just download the java files.  Then compile using javac *.java.  _KnotColouring_ currently takes as argument a file name, followed by an integer.  The integer is the value p, for which you wish to colour the knot mod p by.  For example, _KnotColouring_ is run from the command line as follows:
+##How obtain the files and compile
+
+Clone this repo, then compile by typing
 
 ```
-java KnotColouring trefoil.txt 3
+make
+```
+##Rerun the colouring experiement
+
+If you want to run the experiement again to colour all knots up to 11 crossings mod 3, then type
+
+```
+make run
+```
+
+If you've got lots of cores lying around try typing something like
+
+```
+make run -j20
+```
+
+... this will run the experiment across 20 cores.  To run the experiement with a different number to be coloured by, edit the _COLOURS_ variable in the makefile to be the prime you desire.
+
+## Use the _KnotColouring_ command line interface
+
+Otherwise, _KnotColouring_ can be used to colour Gauss codes found in a text file.  _KnotColouring_ currently takes as argument a file name, followed by an integer.  The integer is the value p, for which you wish to colour the knot mod p by.  For example, _KnotColouring_ is run from the command line as follows:
+
+```
+java -cp choco-solver-2.1.5.jav:. KnotColouring trefoil.txt 3
 ```
 
 The file should be a text file, and should contain one or more Gauss codes for knots in the format "-1, 2, -3, 1, -2, 3", each on its own line, and with no trailing empty lines at the end of the file.  _KnotColouring_ outputs to the command line the Gauss code for a knot followed by its colouring should one exist, and "No solution found" if the knot does not admit a colouring mod p.
-
-###Dependencies
-
-You need to have java installed on your machine and have [Choco version 2.1.5](http://www.dcs.gla.ac.uk/~pat/cpM/jchoco/jchoco2.1.5/jar/) in your classpath for this to work.
 
 ##Overview
 
